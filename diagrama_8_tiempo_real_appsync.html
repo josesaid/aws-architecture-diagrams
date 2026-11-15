@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagram 8: Real time with AppSync and DynamoDB Streams</title>
+<style>
+  :root { --ink:#232F3E; --muted:#5b6573; --line:#e3e7ee; --bg:#f6f8fb; --accent:#FF9900; --accent-dark:#c77700; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: Arial, Helvetica, sans-serif; color: var(--ink); background: var(--bg); line-height:1.55; }
+  header { background: linear-gradient(135deg, #232F3E 0%, #37475A 100%); color:#fff; padding:48px 24px 40px; }
+  .wrap { max-width:1040px; margin:0 auto; }
+  .tag { display:inline-block; font-size:12px; letter-spacing:.08em; text-transform:uppercase; background: var(--accent); color: var(--ink); padding:4px 10px; border-radius:4px; font-weight:bold; }
+  header h1 { font-size:30px; margin:16px 0 10px; }
+  header p { margin:0; max-width:780px; color:#d6dce5; font-size:16px; }
+  .services { display:flex; flex-wrap:wrap; gap:8px; margin-top:20px; }
+  .services span { background: rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25); padding:5px 12px; border-radius:999px; font-size:13px; }
+  main { padding:32px 24px; }
+  section { background:#fff; border:1px solid var(--line); border-radius:10px; padding:24px 28px; margin-bottom:24px; }
+  section h2 { font-size:20px; margin:0 0 16px; padding-bottom:10px; border-bottom:2px solid var(--accent); display:inline-block; }
+  .diagram svg { max-width:100%; height:auto; display:block; margin:0 auto; }
+  ol.flow { list-style:none; padding:0; margin:0; counter-reset: step; }
+  ol.flow li { position:relative; padding:14px 16px 14px 64px; border:1px solid var(--line); border-radius:8px; margin-bottom:12px; background:#fcfdfe; }
+  ol.flow li::before { counter-increment: step; content: counter(step); position:absolute; left:16px; top:14px; width:32px; height:32px; border-radius:50%; background: var(--ink); color:#fff; font-weight:bold; display:flex; align-items:center; justify-content:center; }
+  ol.flow li .svc { display:inline-block; font-weight:bold; font-size:13px; padding:2px 8px; border-radius:4px; color:#fff; margin-bottom:6px; }
+  ol.flow li p { margin:0; }
+  ul.comments { margin:0; padding-left:20px; }
+  ul.comments li { margin-bottom:10px; }
+  footer { background:#fff8e6; border-top:3px solid var(--accent); padding:24px; color:#4a3b10; }
+  footer h3 { margin:0 0 8px; font-size:16px; color: var(--accent-dark); }
+  footer .wrap p { margin:0; }
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<span class="tag">Diagram 8 of 12</span>
+<h1>Real time with AppSync and DynamoDB Streams</h1>
+<p>Data changes reach every connected user without the client polling again. AppSync receives the mutations, DynamoDB Streams detects the changes, and Lambda sends them back to AppSync, which pushes them over WebSocket to subscribed clients.</p>
+<div class="services"><span>AWS AppSync</span><span>Amazon DynamoDB</span><span>DynamoDB Streams</span><span>AWS Lambda</span></div>
+</div></header>
+<main class="wrap">
+<section class="diagram"><h2>Diagram</h2><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="1000" height="600" font-family="Arial, Helvetica, sans-serif" role="img" aria-label="Diagram 8: real time (AppSync + DynamoDB Streams + Lambda)"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#232F3E"/></marker></defs><rect width="1000" height="600" fill="#fff"/><text x="20" y="32" text-anchor="start" font-size="18" font-weight="bold" fill="#232F3E">Diagram 8: real time (AppSync + DynamoDB Streams + Lambda)</text><rect x="240" y="40" width="700" height="420" rx="8" fill="#FAFAFB" stroke="#232F3E" stroke-width="1.2"/><text x="250" y="58" text-anchor="start" font-size="13" font-weight="bold" fill="#232F3E">AWS Cloud</text><rect x="80" y="210" width="60" height="60" rx="6" fill="#232F3E"/><circle cx="110" cy="231" r="7" fill="#fff"/><path d="M96,258 Q96,242 110,242 Q124,242 124,258 Z" fill="#fff"/><text x="110" y="288" text-anchor="middle" font-size="12" font-weight="normal" fill="#232F3E">Users</text><rect x="270" y="210" width="60" height="60" rx="6" fill="#C7004F"/><text x="300" y="245" text-anchor="middle" font-size="15" font-weight="bold" fill="#fff">GQL</text><text x="300" y="288" text-anchor="middle" font-size="12" font-weight="normal" fill="#232F3E">AWS AppSync</text><text x="300" y="303" text-anchor="middle" font-size="12" font-weight="normal" fill="#232F3E">(GraphQL)</text><rect x="450" y="210" width="60" height="60" rx="6" fill="#3B48CC"/><text x="480" y="245" text-anchor="middle" font-size="15" font-weight="bold" fill="#fff">DDB</text><text x="480" y="288" text-anchor="middle" font-size="12" font-weight="normal" fill="#232F3E">Amazon DynamoDB</text><text x="480" y="303" text-anchor="middle" font-size="12" font-weight="normal" fill="#232F3E">(table)</text><rect x="630" y="210" width="60" height="60" rx="6" fill="#ED7100"/><text x="660" y="245" text-anchor="middle" font-size="15" font-weight="bold" fill="#fff">λ</text><text x="660" y="288" text-anchor="middle" font-size="12" font-weight="normal" fill="#232F3E">AWS Lambda</text><text x="660" y="303" text-anchor="middle" font-size="12" font-weight="normal" fill="#232F3E">(processes)</text><polyline points="142,232 268,232" fill="none" stroke="#232F3E" stroke-width="1.6" marker-end="url(#ah)"/><circle cx="205" cy="216" r="10" fill="#232F3E"/><text x="205" y="220" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">1</text><polyline points="332,240 448,240" fill="none" stroke="#232F3E" stroke-width="1.6" marker-end="url(#ah)"/><circle cx="390" cy="224" r="10" fill="#232F3E"/><text x="390" y="228" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">2</text><polyline points="512,240 628,240" fill="none" stroke="#232F3E" stroke-width="1.6" marker-end="url(#ah)"/><circle cx="570" cy="224" r="10" fill="#232F3E"/><text x="570" y="228" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">3</text><text x="570" y="200" text-anchor="middle" font-size="10" font-weight="normal" fill="#232F3E">DynamoDB Streams</text><polyline points="660,208 660,140 300,140 300,208" fill="none" stroke="#232F3E" stroke-width="1.6" marker-end="url(#ah)"/><circle cx="480" cy="128" r="10" fill="#232F3E"/><text x="480" y="132" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">4</text><polyline points="268,262 142,262" fill="none" stroke="#232F3E" stroke-width="1.6" marker-end="url(#ah)"/><circle cx="205" cy="276" r="10" fill="#232F3E"/><text x="205" y="280" text-anchor="middle" font-size="11" font-weight="bold" fill="#fff">5</text><text x="20" y="490" text-anchor="start" font-size="12" font-weight="normal" fill="#232F3E">1.  The user sends a GraphQL mutation to AppSync.</text><text x="20" y="508" text-anchor="start" font-size="12" font-weight="normal" fill="#232F3E">2.  AppSync writes the change to the Amazon DynamoDB table.</text><text x="20" y="526" text-anchor="start" font-size="12" font-weight="normal" fill="#232F3E">3.  DynamoDB Streams emits the change and a Lambda function receives it.</text><text x="20" y="544" text-anchor="start" font-size="12" font-weight="normal" fill="#232F3E">4.  Lambda sends the event back to AppSync.</text><text x="20" y="562" text-anchor="start" font-size="12" font-weight="normal" fill="#232F3E">5.  AppSync pushes the event to subscribed clients over WebSocket.</text></svg></section>
+<section><h2>Comments</h2><ul class="comments"><li>AppSync manages WebSocket subscriptions for you. If you need full control over the connection, API Gateway WebSocket is the alternative.</li><li>DynamoDB Streams delivers each table change in order, so there is no need to poll the database periodically.</li><li>Authenticate connections with Amazon Cognito or another identity provider. Without a valid token, AppSync does not open subscriptions.</li><li>Send only what changed in each event. Resending the full state on every change consumes bandwidth and raises cost.</li></ul></section>
+<section><h2>Information flow</h2><ol class="flow"><li><span class="svc" style="background:#C7004F">AWS AppSync</span><p>The user sends a GraphQL mutation to AppSync.</p></li><li><span class="svc" style="background:#3B48CC">Amazon DynamoDB</span><p>AppSync writes the change to the DynamoDB table.</p></li><li><span class="svc" style="background:#ED7100">DynamoDB Streams + AWS Lambda</span><p>DynamoDB Streams emits the change and a Lambda function receives it.</p></li><li><span class="svc" style="background:#ED7100">AWS Lambda</span><p>Lambda sends the event back to AppSync.</p></li><li><span class="svc" style="background:#C7004F">AWS AppSync</span><p>AppSync pushes the event to subscribed clients over WebSocket.</p></li></ol></section>
+</main>
+<footer><div class="wrap"><h3>Note to consider</h3><p>Subscriptions are billed per connection and per message. Limit events to the clients that need them, using filters in the subscription.</p></div></footer>
+</body>
+</html>
